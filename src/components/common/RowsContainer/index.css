@@ -1,0 +1,15 @@
+.main {
+    @apply col-span-9 flex flex-col gap-5
+}
+
+.secondaryMain {
+    @apply flex gap-5 justify-between
+}
+
+.secondary {
+    @apply col-span-3 flex flex-col gap-5 justify-between
+}
+
+.secondaryContainer {
+    @apply flex gap-5 justify-center
+}
