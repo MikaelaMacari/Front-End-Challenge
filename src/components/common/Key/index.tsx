@@ -1,29 +1,31 @@
-import React, {useContext, useEffect, useRef, useState} from "react";
+import React, {SyntheticEvent, useContext, useEffect, useRef, useState} from "react";
 import {icons} from "assets/static/icons";
 import {ItemInterface} from "ts/interfaces/item";
-import {AppContext, KeyboardContext} from "../../context";
+import {AppContext, KeyboardContext} from "components/context";
 
 type KeyPropsType = {
     itemKey?: ItemInterface
 };
 const Key = ({itemKey}: KeyPropsType) => {
-    const {time, setTime} = useContext(KeyboardContext);
+    const {time, setTime, keys, setKeys} = useContext(KeyboardContext);
+
     // @ts-ignore
     const Icon = icons[itemKey?.icon]
+
     const [keyColor, setKeyColor] = useState<string>('text-gray-500')
     const [iconColor, setIconColor] = useState<string>('disabled')
 
     const timeRef = useRef<AppContext | any>(null);
     timeRef.current = time;
 
-    const handleKeyupColor = (e: any) => {
+    const handleKeyupColor = (event: SyntheticEvent) => {
         setTimeout(() => {
             setKeyColor('text-green-500')
             setIconColor('success')
             setTime(60)
         }, 3000)
     }
-    const handleKeyDownColor = (event: any) => {
+    const handleKeyDownColor = (event: SyntheticEvent) => {
         setKeyColor('text-sky-500')
         setIconColor('primary')
         setTime(60)
